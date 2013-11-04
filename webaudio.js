@@ -1,8 +1,10 @@
 module.exports = function (context, fn) {
 	
     if (typeof context === 'function') {
+      var Context = window.AudioContext || window.webkitAudioContext;
+      if (!Context) throw new Error('AudioContext not supported');
       fn = context;
-      context = new webkitAudioContext() ;
+      context = new Context();
     }
 
     var self = context.createScriptProcessor(2048, 1, 1);
