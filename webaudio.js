@@ -62,6 +62,8 @@ module.exports = function (context, fn) {
 
 		  if (self.playing) return;
 
+      self.context.resume()
+
 		  self.connect(self.context.destination);
 		
 		  self.playing = true;
